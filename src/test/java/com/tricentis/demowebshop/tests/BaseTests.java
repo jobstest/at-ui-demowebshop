@@ -19,7 +19,7 @@ public class BaseTests {
         Configuration.baseUrl = "https://demowebshop.tricentis.com/";
         RestAssured.baseURI = "https://demowebshop.tricentis.com/";
         Configuration.browserSize = "1920x1080";
-        //Configuration.remote = "http://192.168.0.90:4444/wd/hub";
+        Configuration.remote = "https://user1:1234@selenoid.autotests.cloud/wd/hub/";
         DesiredCapabilities capabilities = new DesiredCapabilities();
         capabilities.setCapability("enableVNC", true);
         capabilities.setCapability("enableVideo", true);
@@ -31,7 +31,7 @@ public class BaseTests {
         Attach.screenshotAs("Last screenshot");
         Attach.pageSource();
         Attach.browserConsoleLogs();
-        //Attach.addVideo();
+        Attach.addVideo();
         WebDriverRunner.closeWindow();
     }
 }
