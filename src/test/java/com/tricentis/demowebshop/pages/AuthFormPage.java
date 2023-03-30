@@ -19,8 +19,8 @@ public class AuthFormPage {
     SelenideElement errorMessageAuthEmail = $(".field-validation-error");
 
 
-    public AuthFormPage openLogOnPage(String url) {
-        step("Открыть страницу аутентификации", () -> {
+    public AuthFormPage openPage(String url) {
+        step("Открыть страницу", () -> {
             open(url);
         });
 
@@ -37,7 +37,7 @@ public class AuthFormPage {
     }
 
     public AuthFormPage clickLogInButton() {
-        step("Нажать на кнопку 'Войти в систему'", () -> {
+        step("Нажать на кнопку 'Log In'", () -> {
             buttonLogIn.click();
         });
 
@@ -53,7 +53,7 @@ public class AuthFormPage {
     }
 
     public AuthFormPage checkErrorMessageEmail(String message) {
-        step("Проверить наличие сообщение об ошибке входа", () -> {
+        step("Проверить наличие сообщение об неправильной почте", () -> {
             errorMessageAuthEmail.shouldHave(text(message));
         });
 

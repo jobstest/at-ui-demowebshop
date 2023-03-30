@@ -14,8 +14,6 @@ import org.openqa.selenium.remote.DesiredCapabilities;
 
 public class BaseTests {
 
-
-
     @BeforeAll
     static void setUp() {
         SelenoidConfig config = ConfigFactory.create(SelenoidConfig.class);
