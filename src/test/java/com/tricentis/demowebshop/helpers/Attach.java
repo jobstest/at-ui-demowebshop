@@ -2,7 +2,9 @@ package com.tricentis.demowebshop.helpers;
 
 import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.WebDriverRunner;
+import com.tricentis.demowebshop.config.SelenoidConfig;
 import io.qameta.allure.Attachment;
+import org.aeonbits.owner.ConfigFactory;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.remote.RemoteWebDriver;
@@ -12,9 +14,13 @@ import java.net.URL;
 import java.nio.charset.StandardCharsets;
 
 import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
+import static com.codeborne.selenide.WebDriverRunner.url;
 import static org.openqa.selenium.logging.LogType.BROWSER;
 
 public class Attach {
+
+    SelenoidConfig config = ConfigFactory.create(SelenoidConfig.class);
+    String uniformResourceNameSelenoid = config.uniformResourceNameSelenoid();
 
     @Attachment(value = "{attachName}", type = "text/plain")
     public static String attachAsText(String attachName, String message) {
@@ -51,7 +57,9 @@ public class Attach {
     }
 
     public static URL getVideoUrl(String sessionId) {
-        String videoUrl = "https://selenoid.autotests.cloud/video/" + sessionId + ".mp4";
+        SelenoidConfig config = ConfigFactory.create(SelenoidConfig.class);
+        String uniformResourceNameSelenoid = config.uniformResourceNameSelenoid();
+        String videoUrl = "https://" + uniformResourceNameSelenoid + "/video/" + sessionId + ".mp4";
 
         try {
             return new URL(videoUrl);
