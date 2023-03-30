@@ -9,15 +9,13 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 
-import java.nio.file.attribute.UserDefinedFileAttributeView;
-
 @Owner("parfionov")
 @Severity(SeverityLevel.BLOCKER)
 @Feature("Aутентификация")
 @Story("Возможность войти в ЛК")
 @DisplayName("Аутентификация на странице")
 @Tag("auth")
-public class AuthFormTests extends BaseTests{
+public class AuthFormTests extends BaseTests {
 
     AuthConfig config = ConfigFactory.create(AuthConfig.class);
     AuthFormPage authFormPage = new AuthFormPage();
@@ -27,51 +25,51 @@ public class AuthFormTests extends BaseTests{
     String password = faker.internet().password();
     String correctEmail = config.correctEmail();
     String correctPassword = config.correctPassword();
+    String errorMessageEmailPassword = "Login was unsuccessful. Please correct the errors and try again. No customer account found";
+    String errorMessagePassword = "Login was unsuccessful. Please correct the errors and try again. The credentials provided are incorrect";
+    String errorMessageEmail = "Please enter a valid email address.";
 
     @Test
     @DisplayName("Aутентификация c зарегистрированными почтой и паролем")
-    void authWithRegisteredEmailAndPassword(){
+    void authWithRegisteredEmailAndPassword() {
         authFormPage.openPage("/login")
                 .setEmailAndPassword(correctEmail, correctPassword)
                 .clickLogInButton()
-                .checkEmail("test_web_shop@mail.ru");
+                .checkEmail(correctEmail);
     }
 
     @Test
     @DisplayName("Aутентификация c не зарегистрированной почтой")
-    void authWithNotRegisteredEmail(){
+    void authWithNotRegisteredEmail() {
         authFormPage.openPage("/login")
                 .setEmailAndPassword(email, correctPassword)
                 .clickLogInButton()
-                .checkErrorMessageAuth("Login was unsuccessful. Please correct the errors and try again.\n" +
-                        "No customer account found");
+                .checkErrorMessageAuth(errorMessageEmailPassword);
     }
 
     @Test
     @DisplayName("Aутентификация с не зарегистрированным паролем")
-    void authWithNotRegisteredPassword(){
+    void authWithNotRegisteredPassword() {
         authFormPage.openPage("/login")
                 .setEmailAndPassword(correctEmail, password)
                 .clickLogInButton()
-                .checkErrorMessageAuth("Login was unsuccessful. Please correct the errors and try again.\n" +
-                        "The credentials provided are incorrect");
+                .checkErrorMessageAuth(errorMessagePassword);
     }
 
     @Test
     @DisplayName("Aутентификация c не заполненными  почтой и паролем")
-    void authWithEmptyEmailAndPassword(){
+    void authWithEmptyEmailAndPassword() {
         authFormPage.openPage("/login")
                 .clickLogInButton()
-                .checkErrorMessageAuth("Login was unsuccessful. Please correct the errors and try again.\n" +
-                        "No customer account found");
+                .checkErrorMessageAuth(errorMessageEmailPassword);
     }
 
     @Test
-    @DisplayName("Aутентификация c не заполненными  почтой и паролем")
-    void authWithIncorrectEmail(){
+    @DisplayName("Aутентификация c некорректной почтой")
+    void authWithIncorrectEmail() {
         authFormPage.openPage("/login")
                 .setEmailAndPassword(incorrectEmail, "")
                 .clickLogInButton()
-                .checkErrorMessageEmail("Please enter a valid email address.");
+                .checkErrorMessageEmail(errorMessageEmail);
     }
 }
