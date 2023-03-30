@@ -31,7 +31,7 @@ public class AuthFormTests extends BaseTests{
     @Test
     @DisplayName("Aутентификация c зарегистрированными почтой и паролем")
     void authWithRegisteredEmailAndPassword(){
-        authFormPage.openLogOnPage("/login")
+        authFormPage.openPage("/login")
                 .setEmailAndPassword(correctEmail, correctPassword)
                 .clickLogInButton()
                 .checkEmail("test_web_shop@mail.ru");
@@ -40,7 +40,7 @@ public class AuthFormTests extends BaseTests{
     @Test
     @DisplayName("Aутентификация c не зарегистрированной почтой")
     void authWithNotRegisteredEmail(){
-        authFormPage.openLogOnPage("/login")
+        authFormPage.openPage("/login")
                 .setEmailAndPassword(email, correctPassword)
                 .clickLogInButton()
                 .checkErrorMessageAuth("Login was unsuccessful. Please correct the errors and try again.\n" +
@@ -50,7 +50,7 @@ public class AuthFormTests extends BaseTests{
     @Test
     @DisplayName("Aутентификация с не зарегистрированным паролем")
     void authWithNotRegisteredPassword(){
-        authFormPage.openLogOnPage("/login")
+        authFormPage.openPage("/login")
                 .setEmailAndPassword(correctEmail, password)
                 .clickLogInButton()
                 .checkErrorMessageAuth("Login was unsuccessful. Please correct the errors and try again.\n" +
@@ -60,7 +60,7 @@ public class AuthFormTests extends BaseTests{
     @Test
     @DisplayName("Aутентификация c не заполненными  почтой и паролем")
     void authWithEmptyEmailAndPassword(){
-        authFormPage.openLogOnPage("/login")
+        authFormPage.openPage("/login")
                 .clickLogInButton()
                 .checkErrorMessageAuth("Login was unsuccessful. Please correct the errors and try again.\n" +
                         "No customer account found");
@@ -69,7 +69,7 @@ public class AuthFormTests extends BaseTests{
     @Test
     @DisplayName("Aутентификация c не заполненными  почтой и паролем")
     void authWithIncorrectEmail(){
-        authFormPage.openLogOnPage("/login")
+        authFormPage.openPage("/login")
                 .setEmailAndPassword(incorrectEmail, "")
                 .clickLogInButton()
                 .checkErrorMessageEmail("Please enter a valid email address.");
