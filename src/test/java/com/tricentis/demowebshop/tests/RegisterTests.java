@@ -74,7 +74,7 @@ public class RegisterTests extends BaseTests {
         step("Открыть страницу регистрации", () -> {
             open("/register");
         });
-        step("В поле Password ввести некорректную почту", () -> {
+        step("В поле Password ввести некорректный пароль", () -> {
             $("#Password").setValue(incorrectPassword);
         });
         step("Нажать на кнопку Register", () -> {
