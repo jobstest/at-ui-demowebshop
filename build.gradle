@@ -24,8 +24,6 @@ def allureVersion = "2.21.0",
     webdrivermanagerVersion = "5.3.0",
     restVersion = "5.3.0"
 
-//java {toolchain {languageVersion = JavaLanguageVersion.of(11)}}
-
 allure {
     report {
         version.set(allureVersion)

@@ -11,15 +11,16 @@ import org.junit.jupiter.params.provider.*;
 import java.util.stream.Stream;
 
 @Owner("parfionov")
-@Severity(SeverityLevel.NORMAL)
+@Severity(SeverityLevel.CRITICAL)
 @Feature("Поиск")
 @Story("Поиск товара")
 @DisplayName("Поиск товара в поисковой строке")
 @Tag("auth")
-public class SearchStoreTests extends BaseTests{
+public class SearchStoreTests extends BaseTests {
     AuthFormPage authFormPage = new AuthFormPage();
     SaerchStorePage saerchStorePage = new SaerchStorePage();
 
+    @ParameterizedTest(name = "Поиск в поисковой строке продукта {0}, ожидаем результат: {1}")
     @CsvSource(value = {
             "Computing and Internet | Computing and Internet",
             "Build your own expensive computer | Build your own expensive computer",
@@ -34,14 +35,14 @@ public class SearchStoreTests extends BaseTests{
     },
             delimiter = '|'
     )
-    @ParameterizedTest(name = "Поиск в поисковой строке продукта {0}, ожидаем результат: {1}")
-    void searchProductAllCategories(String product, String result){
+    void searchProductAllCategories(String product, String result) {
         authFormPage.openPage("");
         saerchStorePage.setSearhInput(product)
                 .clickSearchButton()
                 .checkProduct(result);
     }
 
+    @ParameterizedTest(name = "Поиск в поисковой строке продукта из категории 'Desktops' {0}")
     @ValueSource(strings = {
             "Build your own cheap computer",
             "Build your own computer",
@@ -50,15 +51,23 @@ public class SearchStoreTests extends BaseTests{
             "Elite Desktop PC",
             "Simple Computer"
     })
-    @ParameterizedTest(name = "Поиск в поисковой строке продукта из категории 'Desktops' {0}")
-    void searchProductDekstopsCategory(String product){
+    void searchProductDekstopsCategory(String product) {
         authFormPage.openPage("");
         saerchStorePage.setSearhInput(product)
                 .clickSearchButton()
                 .checkProduct(product);
     }
 
-    static Stream<Arguments> searchProductCameraPhotoCategory(){
+    @MethodSource("searchProductCameraPhotoCategory")
+    @ParameterizedTest(name = "Поиск в поисковой строке продукта из категории 'Camera, photo'")
+    void searchProductCameraPhotoCategory(String product) {
+        authFormPage.openPage("");
+        saerchStorePage.setSearhInput(product)
+                .clickSearchButton()
+                .checkProduct(product);
+    }
+
+    static Stream<Arguments> searchProductCameraPhotoCategory() {
         return Stream.of(
                 Arguments.of("1MP 60GB Hard Drive Handycam Camcorder"),
                 Arguments.of("Camcorder"),
@@ -66,28 +75,13 @@ public class SearchStoreTests extends BaseTests{
                 Arguments.of("High Definition 3D Camcorder")
         );
     }
-    @MethodSource("searchProductCameraPhotoCategory")
-    @ParameterizedTest(name = "Поиск в поисковой строке продукта из категории 'Camera, photo'")
-    void searchProductCameraPhotoCategory(String product){
-        authFormPage.openPage("");
-        saerchStorePage.setSearhInput(product)
-                .clickSearchButton()
-                .checkProduct(product);
-    }
 
-    @CsvFileSource(resources = "/doc/test-data-cell-phones.csv", delimiter = '|', numLinesToSkip = 1)
     @ParameterizedTest(name = "Поиск в поисковой строке продукта из категории 'Cell phones'")
-    void searchProductCellPhonesCategory(String product, String result){
+    @CsvFileSource(resources = "/doc/test-data-cell-phones.csv", delimiter = '|', numLinesToSkip = 1)
+    void searchProductCellPhonesCategory(String product, String result) {
         authFormPage.openPage("");
         saerchStorePage.setSearhInput(product)
                 .clickSearchButton()
                 .checkProduct(result);
     }
-
-
-
-
-
-
-
 }

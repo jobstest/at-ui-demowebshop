@@ -3,9 +3,15 @@ package com.tricentis.demowebshop.tests;
 import com.github.javafaker.Faker;
 import com.tricentis.demowebshop.pages.AuthFormPage;
 import com.tricentis.demowebshop.pages.NewsLetterPage;
+import io.qameta.allure.*;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+@Owner("parfionov")
+@Severity(SeverityLevel.NORMAL)
+@Feature("Aутентификация")
+@Story("Возможность войти в ЛК")
+@DisplayName("Аутентификация на странице")
 public class NewsLetterTests extends BaseTests {
     AuthFormPage authFormPage = new AuthFormPage();
     NewsLetterPage newsLetterPage = new NewsLetterPage();

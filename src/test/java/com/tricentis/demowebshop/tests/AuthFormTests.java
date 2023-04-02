@@ -17,7 +17,7 @@ import org.junit.jupiter.api.Test;
 @Tag("auth")
 public class AuthFormTests extends BaseTests {
 
-    AuthConfig config = ConfigFactory.create(AuthConfig.class);
+    AuthConfig config = ConfigFactory.create(AuthConfig.class, System.getProperties());
     AuthFormPage authFormPage = new AuthFormPage();
     Faker faker = new Faker();
     String email = faker.internet().emailAddress();
