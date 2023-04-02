@@ -23,7 +23,6 @@ public class NewsLetterTests extends BaseTests {
     String incorrectEmailMessage = "Enter valid email";
 
     @Test
-    @AllureId("16795")
     @DisplayName("Подписаться на новости")
     void subscribeNews() {
         authFormPage.openPage("");
@@ -33,7 +32,6 @@ public class NewsLetterTests extends BaseTests {
     }
 
     @Test
-    @AllureId("16796")
     @DisplayName("Подписаться на новости с некорректной почтой")
     void subscribeNewsIncorrectEmail() {
         authFormPage.openPage("");
@@ -43,7 +41,6 @@ public class NewsLetterTests extends BaseTests {
     }
 
     @Test
-    @AllureId("16794")
     @DisplayName("Подписаться на новости с незаполненной почтой")
     void subscribeNewsEmptyEmail() {
         authFormPage.openPage("");

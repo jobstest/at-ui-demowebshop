@@ -26,7 +26,6 @@ public class RegisterTests extends BaseTests {
     String incorrectPassword = faker.internet().password(1, 5);
 
     @Test
-    @AllureId("16797")
     @Severity(SeverityLevel.NORMAL)
     @DisplayName("Ошибки на пустые поля в блоке 'Register'")
     void emptyFieldRegPage() {

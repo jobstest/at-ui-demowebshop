@@ -30,7 +30,6 @@ public class AuthFormTests extends BaseTests {
     String errorMessageEmail = "Please enter a valid email address.";
 
     @Test
-    @AllureId("16791")
     @DisplayName("Aутентификация c зарегистрированными почтой и паролем")
     void authWithRegisteredEmailAndPassword() {
         authFormPage.openPage("/login")
@@ -40,7 +39,6 @@ public class AuthFormTests extends BaseTests {
     }
 
     @Test
-    @AllureId("16789")
     @DisplayName("Aутентификация c не зарегистрированной почтой")
     void authWithNotRegisteredEmail() {
         authFormPage.openPage("/login")
@@ -50,7 +48,6 @@ public class AuthFormTests extends BaseTests {
     }
 
     @Test
-    @AllureId("16793")
     @DisplayName("Aутентификация с не зарегистрированным паролем")
     void authWithNotRegisteredPassword() {
         authFormPage.openPage("/login")
@@ -60,7 +57,6 @@ public class AuthFormTests extends BaseTests {
     }
 
     @Test
-    @AllureId("16790")
     @DisplayName("Aутентификация c не заполненными  почтой и паролем")
     void authWithEmptyEmailAndPassword() {
         authFormPage.openPage("/login")
@@ -69,7 +65,6 @@ public class AuthFormTests extends BaseTests {
     }
 
     @Test
-    @AllureId("16792")
     @DisplayName("Aутентификация c некорректной почтой")
     void authWithIncorrectEmail() {
         authFormPage.openPage("/login")
