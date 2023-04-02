@@ -18,6 +18,7 @@ public class SearchStoreTests extends BaseTests {
     AuthFormPage authFormPage = new AuthFormPage();
     SaerchStorePage saerchStorePage = new SaerchStorePage();
 
+    @AllureId("16799")
     @ParameterizedTest(name = "Поиск в поисковой строке продукта {0}, ожидаем результат: {1}")
     @CsvSource(value = {
             "Computing and Internet | Computing and Internet",
@@ -40,6 +41,7 @@ public class SearchStoreTests extends BaseTests {
                 .checkProduct(result);
     }
 
+    @AllureId("16798")
     @ParameterizedTest(name = "Поиск в поисковой строке продукта из категории 'Desktops' {0}")
     @ValueSource(strings = {
             "Build your own cheap computer",
@@ -55,6 +57,8 @@ public class SearchStoreTests extends BaseTests {
                 .clickSearchButton()
                 .checkProduct(product);
     }
+
+    @AllureId("16800")
     @MethodSource("searchProductCameraPhotoCategory")
     @ParameterizedTest(name = "Поиск в поисковой строке продукта из категории 'Camera, photo'")
     void searchProductCameraPhotoCategory(String product) {
@@ -73,6 +77,7 @@ public class SearchStoreTests extends BaseTests {
         );
     }
 
+    @AllureId("16801")
     @ParameterizedTest(name = "Поиск в поисковой строке продукта из категории 'Cell phones'")
     @CsvFileSource(resources = "/doc/test-data-cell-phones.csv", delimiter = '|', numLinesToSkip = 1)
     void searchProductCellPhonesCategory(String product, String result) {

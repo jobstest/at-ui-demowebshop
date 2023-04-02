@@ -26,6 +26,7 @@ public class RegisterTests extends BaseTests {
     String incorrectPassword = faker.internet().password(1, 5);
 
     @Test
+    @AllureId("16797")
     @Severity(SeverityLevel.NORMAL)
     @DisplayName("Ошибки на пустые поля в блоке 'Register'")
     void emptyFieldRegPage() {
@@ -46,6 +47,7 @@ public class RegisterTests extends BaseTests {
     }
 
     @Test
+    @AllureId("16802")
     @Severity(SeverityLevel.CRITICAL)
     @DisplayName("Ошибка на некорректную почту в поле Email")
     void errorIncorrectEmailsRegPage() {
@@ -65,6 +67,7 @@ public class RegisterTests extends BaseTests {
     }
 
     @Test
+    @AllureId("16804")
     @Severity(SeverityLevel.NORMAL)
     @DisplayName("Ошибка на некорректный пароль в поле Password")
     void errorIncorrectPasswordRegPage() {
