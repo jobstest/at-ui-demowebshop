@@ -9,9 +9,9 @@ import org.junit.jupiter.api.Test;
 
 @Owner("parfionov")
 @Severity(SeverityLevel.NORMAL)
-@Feature("Aутентификация")
-@Story("Возможность войти в ЛК")
-@DisplayName("Аутентификация на странице")
+@Feature("Подписка")
+@Story("Подписка на новости от интернет-магазина")
+@DisplayName("Подписка на новости")
 public class NewsLetterTests extends BaseTests {
     AuthFormPage authFormPage = new AuthFormPage();
     NewsLetterPage newsLetterPage = new NewsLetterPage();
@@ -23,6 +23,7 @@ public class NewsLetterTests extends BaseTests {
     String incorrectEmailMessage = "Enter valid email";
 
     @Test
+    @AllureId("16795")
     @DisplayName("Подписаться на новости")
     void subscribeNews() {
         authFormPage.openPage("");
@@ -32,6 +33,7 @@ public class NewsLetterTests extends BaseTests {
     }
 
     @Test
+    @AllureId("16796")
     @DisplayName("Подписаться на новости с некорректной почтой")
     void subscribeNewsIncorrectEmail() {
         authFormPage.openPage("");
@@ -41,6 +43,7 @@ public class NewsLetterTests extends BaseTests {
     }
 
     @Test
+    @AllureId("16794")
     @DisplayName("Подписаться на новости с незаполненной почтой")
     void subscribeNewsEmptyEmail() {
         authFormPage.openPage("");
