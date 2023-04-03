@@ -29,3 +29,7 @@ Java11, Gradle, IntelliJ IDEA, Selenide, Selenoid, JUnit5, Jenkins, Allure Repor
 ## Результаты выполнения тестов интегрированы с Atlassian Jira
 ![Jira](./design/images/Jira.jpg)
 
+## Откорректированный тест, сгенерированный ChatGpt
+TODO: эксперимент считаю удачным, необходимы дальнейшие исследования.
+![ChatGpt](./design/images/ChatGpt.jpg)
+
