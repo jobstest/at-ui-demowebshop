@@ -11,10 +11,10 @@ import org.junit.jupiter.api.Test;
 
 @Owner("parfionov")
 @Severity(SeverityLevel.BLOCKER)
-@Feature("Aутентификация")
+@Feature("Aвторизация")
 @Story("Возможность войти в ЛК")
 @Tag("auth")
-@DisplayName("Аутентификация на странице")
+@DisplayName("Aвторизация на странице")
 public class AuthFormTests extends BaseTests {
 
     AuthConfig config = ConfigFactory.create(AuthConfig.class, System.getProperties());
@@ -31,7 +31,7 @@ public class AuthFormTests extends BaseTests {
 
     @Test
     @AllureId("16791")
-    @DisplayName("Aутентификация c зарегистрированными почтой и паролем")
+    @DisplayName("Aвторизация c зарегистрированными почтой и паролем")
     void authWithRegisteredEmailAndPassword() {
         authFormPage.openPage("/login")
                 .setEmailAndPassword(correctEmail, correctPassword)
@@ -41,7 +41,7 @@ public class AuthFormTests extends BaseTests {
 
     @Test
     @AllureId("16789")
-    @DisplayName("Aутентификация c не зарегистрированной почтой")
+    @DisplayName("Aвторизация c не зарегистрированной почтой")
     void authWithNotRegisteredEmail() {
         authFormPage.openPage("/login")
                 .setEmailAndPassword(email, correctPassword)
@@ -51,7 +51,7 @@ public class AuthFormTests extends BaseTests {
 
     @Test
     @AllureId("16793")
-    @DisplayName("Aутентификация с не зарегистрированным паролем")
+    @DisplayName("Aвторизация с не зарегистрированным паролем")
     void authWithNotRegisteredPassword() {
         authFormPage.openPage("/login")
                 .setEmailAndPassword(correctEmail, password)
@@ -61,7 +61,7 @@ public class AuthFormTests extends BaseTests {
 
     @Test
     @AllureId("16790")
-    @DisplayName("Aутентификация c не заполненными  почтой и паролем")
+    @DisplayName("Aвторизация c не заполненными  почтой и паролем")
     void authWithEmptyEmailAndPassword() {
         authFormPage.openPage("/login")
                 .clickLogInButton()
@@ -70,7 +70,7 @@ public class AuthFormTests extends BaseTests {
 
     @Test
     @AllureId("16792")
-    @DisplayName("Aутентификация c некорректной почтой")
+    @DisplayName("Aвторизация c некорректной почтой")
     void authWithIncorrectEmail() {
         authFormPage.openPage("/login")
                 .setEmailAndPassword(incorrectEmail, "")
