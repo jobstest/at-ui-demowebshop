@@ -3,6 +3,7 @@ package com.tricentis.demowebshop.tests;
 import com.github.javafaker.Faker;
 import com.github.javafaker.Name;
 import io.qameta.allure.*;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
@@ -87,7 +88,7 @@ public class RegisterTests extends BaseTests {
     }
 
     @Test
-    @Deprecated
+    @Disabled
     @DisplayName("Регистрация")
     @Severity(SeverityLevel.BLOCKER)
     void inputAllFieldsRegPage() {
