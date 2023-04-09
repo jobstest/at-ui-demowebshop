@@ -3,6 +3,7 @@ package com.tricentis.demowebshop.tests;
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.WebDriverRunner;
 import com.codeborne.selenide.logevents.SelenideLogger;
+import com.tricentis.demowebshop.config.RemoteOrLocalConfig;
 import com.tricentis.demowebshop.config.SelenoidConfig;
 import com.tricentis.demowebshop.helpers.Attach;
 import io.qameta.allure.selenide.AllureSelenide;
@@ -16,6 +17,7 @@ public class BaseTests {
 
     @BeforeAll
     static void setUp() {
+        RemoteOrLocalConfig configRL = ConfigFactory.create(RemoteOrLocalConfig.class, System.getProperties());
         SelenoidConfig config = ConfigFactory.create(SelenoidConfig.class);
         String loginSelenoid = config.loginSelenoid();
         String passwordSelenoid = config.passwordSelenoid();
@@ -23,10 +25,13 @@ public class BaseTests {
 
         SelenideLogger.addListener("allure", new AllureSelenide());
 
-        Configuration.baseUrl = "https://demowebshop.tricentis.com/";
+        Configuration.baseUrl = configRL.baseUrl();
         RestAssured.baseURI = "https://demowebshop.tricentis.com/";
-        Configuration.browserSize = "1920x1080";
+        Configuration.browserSize = configRL.browserSize();
         Configuration.remote = "https://" + loginSelenoid + ":" + passwordSelenoid + "@" + uniformResourceNameSelenoid +"/wd/hub/";
+        Configuration.remote = configRL.remote();
+        Configuration.browser = configRL.browser();
+        Configuration.browserVersion = configRL.browserVersion();
         DesiredCapabilities capabilities = new DesiredCapabilities();
         capabilities.setCapability("enableVNC", true);
         capabilities.setCapability("enableVideo", true);
