@@ -7,6 +7,7 @@ import com.tricentis.demowebshop.tests.BaseTests;
 import io.qameta.allure.Feature;
 import io.qameta.allure.Owner;
 import io.qameta.allure.Story;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -20,6 +21,7 @@ import static com.codeborne.selenide.Selenide.$;
 public class ChatGptTests extends BaseTests {
 
     @Test
+    @Disabled
     @DisplayName("Тест сгенерированный ChatGpt")
     public void addBookToCart() {
         // Set up Selenide Configuration

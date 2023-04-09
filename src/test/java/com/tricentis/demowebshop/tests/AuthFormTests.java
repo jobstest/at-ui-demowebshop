@@ -30,6 +30,7 @@ public class AuthFormTests extends BaseTests {
     String errorMessageEmail = "Please enter a valid email address.";
 
     @Test
+    @Tag("auth")
     @AllureId("16791")
     @DisplayName("Aвторизация c зарегистрированными почтой и паролем")
     void authWithRegisteredEmailAndPassword() {

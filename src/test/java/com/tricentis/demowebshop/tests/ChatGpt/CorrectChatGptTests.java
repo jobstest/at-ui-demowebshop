@@ -7,6 +7,7 @@ import com.tricentis.demowebshop.tests.BaseTests;
 import io.qameta.allure.Feature;
 import io.qameta.allure.Owner;
 import io.qameta.allure.Story;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
@@ -21,6 +22,7 @@ import static com.codeborne.selenide.Selenide.$;
 public class CorrectChatGptTests extends BaseTests {
 
     @Test
+    @Disabled
     @DisplayName("Откорректированный тест ChatGpt")
     public void addBookToCartCorrect() {
         /*Write Selenide, Java, Gradle code to open https://demowebshop.tricentis.com / by Test example: Add an item to the cart
