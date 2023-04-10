@@ -15,6 +15,7 @@ Java11, Gradle, IntelliJ IDEA, Selenide, Selenoid, JUnit5, Jenkins, Allure Repor
 ### Параметры сборки
 #### Конфиденциальные данные размещены в файлах properties и вызываются в настройках Jenkins
 ####Локальный запуск: gradle clean test -DlocalOrRemote=local
+
 ####Удаленный запуск: gradle clean test -DlocalOrRemote=remote
 ![Confidential_data1](./design/images/Confidential_data.jpg)
 
