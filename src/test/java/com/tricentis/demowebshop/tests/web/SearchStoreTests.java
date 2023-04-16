@@ -1,7 +1,8 @@
-package com.tricentis.demowebshop.tests;
+package com.tricentis.demowebshop.tests.web;
 
 import com.tricentis.demowebshop.pages.AuthFormPage;
 import com.tricentis.demowebshop.pages.SaerchStorePage;
+import com.tricentis.demowebshop.tests.BaseTests;
 import io.qameta.allure.*;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;

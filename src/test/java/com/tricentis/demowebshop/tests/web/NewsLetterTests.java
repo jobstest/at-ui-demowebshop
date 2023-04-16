@@ -1,8 +1,9 @@
-package com.tricentis.demowebshop.tests;
+package com.tricentis.demowebshop.tests.web;
 
 import com.github.javafaker.Faker;
 import com.tricentis.demowebshop.pages.AuthFormPage;
 import com.tricentis.demowebshop.pages.NewsLetterPage;
+import com.tricentis.demowebshop.tests.BaseTests;
 import io.qameta.allure.*;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
