@@ -1,4 +1,4 @@
-package com.tricentis.demowebshop.tests.ChatGpt;
+package com.tricentis.demowebshop.tests.web.chatgpt;
 
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.Selenide;
