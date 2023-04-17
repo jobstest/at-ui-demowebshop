@@ -3,7 +3,6 @@ package com.tricentis.demowebshop.tests.api;
 import com.codeborne.selenide.WebDriverRunner;
 import com.tricentis.demowebshop.config.AuthConfig;
 import com.tricentis.demowebshop.tests.BaseTests;
-import io.qameta.allure.restassured.AllureRestAssured;
 import org.aeonbits.owner.ConfigFactory;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
