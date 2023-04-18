@@ -21,14 +21,14 @@ public class AuthFormTests extends BaseTests {
     AuthConfig config = ConfigFactory.create(AuthConfig.class, System.getProperties());
     AuthFormPage authFormPage = new AuthFormPage();
     Faker faker = new Faker();
-    String email = faker.internet().emailAddress();
-    String incorrectEmail = faker.internet().emailAddress() + faker.random();
-    String password = faker.internet().password();
-    String correctEmail = config.correctEmail();
-    String correctPassword = config.correctPassword();
-    String errorMessageEmailPassword = "Login was unsuccessful. Please correct the errors and try again. No customer account found";
-    String errorMessagePassword = "Login was unsuccessful. Please correct the errors and try again. The credentials provided are incorrect";
-    String errorMessageEmail = "Please enter a valid email address.";
+    private String email = faker.internet().emailAddress();
+    private String incorrectEmail = faker.internet().emailAddress() + faker.random();
+    private String password = faker.internet().password();
+    private final String correctEmail = config.correctEmail();
+    private final String correctPassword = config.correctPassword();
+    private String errorMessageEmailPassword = "Login was unsuccessful. Please correct the errors and try again. No customer account found";
+    private String errorMessagePassword = "Login was unsuccessful. Please correct the errors and try again. The credentials provided are incorrect";
+    private String errorMessageEmail = "Please enter a valid email address.";
 
     @Test
     @Tag("auth")
@@ -52,6 +52,15 @@ public class AuthFormTests extends BaseTests {
     }
 
     @Test
+    @AllureId("16790")
+    @DisplayName("Aвторизация c не заполненными  почтой и паролем")
+    void authWithEmptyEmailAndPassword() {
+        authFormPage.openPage("/login")
+                .clickLogInButton()
+                .checkErrorMessageAuth(errorMessageEmailPassword);
+    }
+
+    @Test
     @AllureId("16793")
     @DisplayName("Aвторизация с не зарегистрированным паролем")
     void authWithNotRegisteredPassword() {
@@ -59,15 +68,6 @@ public class AuthFormTests extends BaseTests {
                 .setEmailAndPassword(correctEmail, password)
                 .clickLogInButton()
                 .checkErrorMessageAuth(errorMessagePassword);
-    }
-
-    @Test
-    @AllureId("16790")
-    @DisplayName("Aвторизация c не заполненными  почтой и паролем")
-    void authWithEmptyEmailAndPassword() {
-        authFormPage.openPage("/login")
-                .clickLogInButton()
-                .checkErrorMessageAuth(errorMessageEmailPassword);
     }
 
     @Test

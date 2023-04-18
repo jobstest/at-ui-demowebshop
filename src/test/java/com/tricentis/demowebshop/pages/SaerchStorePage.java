@@ -1,38 +1,36 @@
 package com.tricentis.demowebshop.pages;
 
 import com.codeborne.selenide.SelenideElement;
+import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 
 import static com.codeborne.selenide.Condition.text;
+import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.$;
-import static io.qameta.allure.Allure.step;
 
 public class SaerchStorePage {
 
-    SelenideElement searchStoreInput = $("#small-searchterms");
-    SelenideElement buttonSearch = $(By.xpath("//input[@value='Search']"));
-    SelenideElement pageCategories = $(".page-body");
+    private SelenideElement searchStoreInput = $("#small-searchterms");
+    private SelenideElement buttonSearch = $(By.xpath("//input[@value='Search']"));
+    private SelenideElement pageCategories = $(".page-body");
 
-    public SaerchStorePage setSearhInput(String product){
-        step("Заполнить поле 'Saerch store'", () ->{
-            searchStoreInput.setValue(product);
-        });
+    @Step("Заполнить поле 'Saerch store'")
+    public SaerchStorePage setSearhInput(String product) {
+        searchStoreInput.shouldBe(visible);
+        searchStoreInput.setValue(product);
         return this;
     }
 
-    public SaerchStorePage clickSearchButton(){
-        step("Нажать на кнопку 'Saerch'", () -> {
-            buttonSearch.click();
-        });
-
+    @Step("Нажать на кнопку 'Saerch'")
+    public SaerchStorePage clickSearchButton() {
+        buttonSearch.shouldBe(visible);
+        buttonSearch.click();
         return this;
     }
 
+    @Step("Проверить наличие товара")
     public SaerchStorePage checkProduct(String product) {
-        step("Проверить наличие товара", () -> {
-            pageCategories.shouldHave(text(product));
-        });
-
+        pageCategories.shouldHave(text(product));
         return this;
     }
 }

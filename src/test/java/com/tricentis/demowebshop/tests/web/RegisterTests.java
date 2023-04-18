@@ -21,7 +21,7 @@ import static io.qameta.allure.Allure.step;
 public class RegisterTests extends BaseTests {
 
     Faker faker = new Faker();
-    String incorrectEmail = faker.internet().emailAddress() + faker.random();
+    private String incorrectEmail = faker.internet().emailAddress() + faker.random();
     Name firstName = faker.name();
     Name lastName = faker.name();
     String password = faker.internet().password();

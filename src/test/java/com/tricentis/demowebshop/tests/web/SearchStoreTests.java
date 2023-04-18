@@ -80,7 +80,7 @@ public class SearchStoreTests extends BaseTests {
 
     @AllureId("16801")
     @ParameterizedTest(name = "Поиск в поисковой строке продукта из категории 'Cell phones'")
-    @CsvFileSource(resources = "/doc/test-data-cell-phones.csv", delimiter = '|', numLinesToSkip = 1)
+    @CsvFileSource(resources = "/doc_for_parametrize_tests/test-data-cell-phones.csv", delimiter = '|', numLinesToSkip = 1)
     void searchProductCellPhonesCategory(String product, String result) {
         authFormPage.openPage("");
         saerchStorePage.setSearhInput(product)

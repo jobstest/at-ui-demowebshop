@@ -17,20 +17,20 @@ public class NewsLetterTests extends BaseTests {
     AuthFormPage authFormPage = new AuthFormPage();
     NewsLetterPage newsLetterPage = new NewsLetterPage();
     Faker faker = new Faker();
-    String correctEmail = faker.internet().emailAddress();
-    String incorrectEmail = faker.internet().emailAddress() + faker.random();
-    String successfulSubscriptionMessage = "Thank you for signing up! " +
+    private String correctEmail = faker.internet().emailAddress();
+    private String incorrectEmail = faker.internet().emailAddress() + faker.random();
+    private String successfulSubscriptionMessage = "Thank you for signing up! " +
             "A verification email has been sent. We appreciate your interest.";
-    String incorrectEmailMessage = "Enter valid email";
+    private String incorrectEmailMessage = "Enter valid email";
 
     @Test
     @AllureId("16795")
     @DisplayName("Подписаться на новости")
     void subscribeNews() {
         authFormPage.openPage("");
-        newsLetterPage.setNewsletterInput(correctEmail);
-        newsLetterPage.clickSubscribeButton();
-        newsLetterPage.checkMessage(successfulSubscriptionMessage);
+        newsLetterPage.setNewsletterInput(correctEmail)
+                .clickSubscribeButton()
+                .checkMessage(successfulSubscriptionMessage);
     }
 
     @Test
@@ -38,9 +38,9 @@ public class NewsLetterTests extends BaseTests {
     @DisplayName("Подписаться на новости с некорректной почтой")
     void subscribeNewsIncorrectEmail() {
         authFormPage.openPage("");
-        newsLetterPage.setNewsletterInput(incorrectEmail);
-        newsLetterPage.clickSubscribeButton();
-        newsLetterPage.checkMessage(incorrectEmailMessage);
+        newsLetterPage.setNewsletterInput(incorrectEmail)
+                .clickSubscribeButton()
+                .checkMessage(incorrectEmailMessage);
     }
 
     @Test
@@ -48,7 +48,7 @@ public class NewsLetterTests extends BaseTests {
     @DisplayName("Подписаться на новости с незаполненной почтой")
     void subscribeNewsEmptyEmail() {
         authFormPage.openPage("");
-        newsLetterPage.clickSubscribeButton();
-        newsLetterPage.checkMessage(incorrectEmailMessage);
+        newsLetterPage.clickSubscribeButton()
+                .checkMessage(incorrectEmailMessage);
     }
 }
