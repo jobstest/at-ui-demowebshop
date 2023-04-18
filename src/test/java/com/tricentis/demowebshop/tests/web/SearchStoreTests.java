@@ -1,6 +1,6 @@
 package com.tricentis.demowebshop.tests.web;
 
-import com.tricentis.demowebshop.pages.AuthFormPage;
+import com.tricentis.demowebshop.pages.BasePage;
 import com.tricentis.demowebshop.pages.SaerchStorePage;
 import com.tricentis.demowebshop.tests.BaseTests;
 import io.qameta.allure.*;
@@ -16,8 +16,8 @@ import java.util.stream.Stream;
 @Story("Поиск товара в поисковой строке")
 @DisplayName("Поиск товара в поисковой строке")
 public class SearchStoreTests extends BaseTests {
-    AuthFormPage authFormPage = new AuthFormPage();
     SaerchStorePage saerchStorePage = new SaerchStorePage();
+    BasePage basePage = new BasePage();
 
     @AllureId("16799")
     @ParameterizedTest(name = "Поиск в поисковой строке продукта {0}, ожидаем результат: {1}")
@@ -36,7 +36,7 @@ public class SearchStoreTests extends BaseTests {
             delimiter = '|'
     )
     void searchProductAllCategories(String product, String result) {
-        authFormPage.openPage("");
+        basePage.openPage("");
         saerchStorePage.setSearhInput(product)
                 .clickSearchButton()
                 .checkProduct(result);
@@ -53,7 +53,7 @@ public class SearchStoreTests extends BaseTests {
             "Simple Computer"
     })
     void searchProductDekstopsCategory(String product) {
-        authFormPage.openPage("");
+        basePage.openPage("");
         saerchStorePage.setSearhInput(product)
                 .clickSearchButton()
                 .checkProduct(product);
@@ -63,7 +63,7 @@ public class SearchStoreTests extends BaseTests {
     @MethodSource("searchProductCameraPhotoCategory")
     @ParameterizedTest(name = "Поиск в поисковой строке продукта из категории 'Camera, photo'")
     void searchProductCameraPhotoCategory(String product) {
-        authFormPage.openPage("");
+        basePage.openPage("");
         saerchStorePage.setSearhInput(product)
                 .clickSearchButton()
                 .checkProduct(product);
@@ -80,9 +80,9 @@ public class SearchStoreTests extends BaseTests {
 
     @AllureId("16801")
     @ParameterizedTest(name = "Поиск в поисковой строке продукта из категории 'Cell phones'")
-    @CsvFileSource(resources = "/doc_for_parametrize_tests/test-data-cell-phones.csv", delimiter = '|', numLinesToSkip = 1)
+    @CsvFileSource(resources = "/doc_for_parametrize_tests/data-cell-phones.csv", delimiter = '|', numLinesToSkip = 1)
     void searchProductCellPhonesCategory(String product, String result) {
-        authFormPage.openPage("");
+        basePage.openPage("");
         saerchStorePage.setSearhInput(product)
                 .clickSearchButton()
                 .checkProduct(result);

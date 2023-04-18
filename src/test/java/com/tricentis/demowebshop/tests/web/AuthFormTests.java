@@ -3,6 +3,7 @@ package com.tricentis.demowebshop.tests.web;
 import com.github.javafaker.Faker;
 import com.tricentis.demowebshop.config.AuthConfig;
 import com.tricentis.demowebshop.pages.AuthFormPage;
+import com.tricentis.demowebshop.pages.BasePage;
 import com.tricentis.demowebshop.tests.BaseTests;
 import io.qameta.allure.*;
 import org.aeonbits.owner.ConfigFactory;
@@ -17,8 +18,8 @@ import org.junit.jupiter.api.Test;
 @Tag("auth")
 @DisplayName("Aвторизация на странице")
 public class AuthFormTests extends BaseTests {
-
     AuthConfig config = ConfigFactory.create(AuthConfig.class, System.getProperties());
+    BasePage basePage = new BasePage();
     AuthFormPage authFormPage = new AuthFormPage();
     Faker faker = new Faker();
     private String email = faker.internet().emailAddress();
@@ -35,8 +36,8 @@ public class AuthFormTests extends BaseTests {
     @AllureId("16791")
     @DisplayName("Aвторизация c зарегистрированными почтой и паролем")
     void authWithRegisteredEmailAndPassword() {
-        authFormPage.openPage("/login")
-                .setEmailAndPassword(correctEmail, correctPassword)
+        basePage.openPage("/login");
+        authFormPage.setEmailAndPassword(correctEmail, correctPassword)
                 .clickLogInButton()
                 .checkEmail(correctEmail);
     }
@@ -45,8 +46,8 @@ public class AuthFormTests extends BaseTests {
     @AllureId("16789")
     @DisplayName("Aвторизация c не зарегистрированной почтой")
     void authWithNotRegisteredEmail() {
-        authFormPage.openPage("/login")
-                .setEmailAndPassword(email, correctPassword)
+        basePage.openPage("/login");
+        authFormPage.setEmailAndPassword(email, correctPassword)
                 .clickLogInButton()
                 .checkErrorMessageAuth(errorMessageEmailPassword);
     }
@@ -55,8 +56,8 @@ public class AuthFormTests extends BaseTests {
     @AllureId("16790")
     @DisplayName("Aвторизация c не заполненными  почтой и паролем")
     void authWithEmptyEmailAndPassword() {
-        authFormPage.openPage("/login")
-                .clickLogInButton()
+        basePage.openPage("/login");
+        authFormPage.clickLogInButton()
                 .checkErrorMessageAuth(errorMessageEmailPassword);
     }
 
@@ -64,8 +65,8 @@ public class AuthFormTests extends BaseTests {
     @AllureId("16793")
     @DisplayName("Aвторизация с не зарегистрированным паролем")
     void authWithNotRegisteredPassword() {
-        authFormPage.openPage("/login")
-                .setEmailAndPassword(correctEmail, password)
+        basePage.openPage("/login");
+        authFormPage.setEmailAndPassword(correctEmail, password)
                 .clickLogInButton()
                 .checkErrorMessageAuth(errorMessagePassword);
     }
@@ -74,8 +75,8 @@ public class AuthFormTests extends BaseTests {
     @AllureId("16792")
     @DisplayName("Aвторизация c некорректной почтой")
     void authWithIncorrectEmail() {
-        authFormPage.openPage("/login")
-                .setEmailAndPassword(incorrectEmail, "")
+        basePage.openPage("/login");
+        authFormPage.setEmailAndPassword(incorrectEmail, "")
                 .clickLogInButton()
                 .checkErrorMessageEmail(errorMessageEmail);
     }

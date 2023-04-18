@@ -1,7 +1,7 @@
 package com.tricentis.demowebshop.tests.web;
 
 import com.github.javafaker.Faker;
-import com.tricentis.demowebshop.pages.AuthFormPage;
+import com.tricentis.demowebshop.pages.BasePage;
 import com.tricentis.demowebshop.pages.NewsLetterPage;
 import com.tricentis.demowebshop.tests.BaseTests;
 import io.qameta.allure.*;
@@ -14,8 +14,8 @@ import org.junit.jupiter.api.Test;
 @Story("Подписка на новости от интернет-магазина")
 @DisplayName("Подписка на новости")
 public class NewsLetterTests extends BaseTests {
-    AuthFormPage authFormPage = new AuthFormPage();
     NewsLetterPage newsLetterPage = new NewsLetterPage();
+    BasePage basePage = new BasePage();
     Faker faker = new Faker();
     private String correctEmail = faker.internet().emailAddress();
     private String incorrectEmail = faker.internet().emailAddress() + faker.random();
@@ -27,7 +27,7 @@ public class NewsLetterTests extends BaseTests {
     @AllureId("16795")
     @DisplayName("Подписаться на новости")
     void subscribeNews() {
-        authFormPage.openPage("");
+        basePage.openPage("");
         newsLetterPage.setNewsletterInput(correctEmail)
                 .clickSubscribeButton()
                 .checkMessage(successfulSubscriptionMessage);
@@ -37,7 +37,7 @@ public class NewsLetterTests extends BaseTests {
     @AllureId("16796")
     @DisplayName("Подписаться на новости с некорректной почтой")
     void subscribeNewsIncorrectEmail() {
-        authFormPage.openPage("");
+        basePage.openPage("");
         newsLetterPage.setNewsletterInput(incorrectEmail)
                 .clickSubscribeButton()
                 .checkMessage(incorrectEmailMessage);
@@ -47,7 +47,7 @@ public class NewsLetterTests extends BaseTests {
     @AllureId("16794")
     @DisplayName("Подписаться на новости с незаполненной почтой")
     void subscribeNewsEmptyEmail() {
-        authFormPage.openPage("");
+        basePage.openPage("");
         newsLetterPage.clickSubscribeButton()
                 .checkMessage(incorrectEmailMessage);
     }
