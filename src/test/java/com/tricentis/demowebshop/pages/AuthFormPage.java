@@ -7,10 +7,8 @@ import org.openqa.selenium.By;
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.$;
-import static com.codeborne.selenide.Selenide.open;
 
 public class AuthFormPage {
-
     private SelenideElement emailInput = $("#Email");
     private SelenideElement passwordInput = $("#Password");
     private SelenideElement buttonLogIn = $(By.xpath("//input[@value='Log in']"));
@@ -18,12 +16,6 @@ public class AuthFormPage {
     private SelenideElement errorMessageAuth = $(".message-error");
 
     private SelenideElement errorMessageAuthEmail = $(".field-validation-error");
-
-    @Step("Открыть страницу")
-    public AuthFormPage openPage(String url) {
-        open(url);
-        return this;
-    }
 
     @Step("Заполнить поля 'Email' и 'Password'")
     public AuthFormPage setEmailAndPassword(String email, String password) {
