@@ -11,7 +11,7 @@ import org.junit.jupiter.params.provider.*;
 import java.util.stream.Stream;
 
 @Owner("parfionov")
-@Severity(SeverityLevel.CRITICAL)
+@Severity(SeverityLevel.NORMAL)
 @Feature("Поиск")
 @Story("Поиск товара в поисковой строке")
 @DisplayName("Поиск товара в поисковой строке")
