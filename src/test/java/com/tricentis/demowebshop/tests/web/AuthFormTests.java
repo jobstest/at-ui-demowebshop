@@ -1,12 +1,7 @@
 package com.tricentis.demowebshop.tests.web;
 
-import com.github.javafaker.Faker;
-import com.tricentis.demowebshop.config.AuthConfig;
-import com.tricentis.demowebshop.pages.AuthFormPage;
-import com.tricentis.demowebshop.pages.BasePage;
 import com.tricentis.demowebshop.tests.BaseTests;
 import io.qameta.allure.*;
-import org.aeonbits.owner.ConfigFactory;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
@@ -18,10 +13,6 @@ import org.junit.jupiter.api.Test;
 @Tag("auth")
 @DisplayName("Aвторизация на странице")
 public class AuthFormTests extends BaseTests {
-    AuthConfig config = ConfigFactory.create(AuthConfig.class, System.getProperties());
-    BasePage basePage = new BasePage();
-    AuthFormPage authFormPage = new AuthFormPage();
-    Faker faker = new Faker();
     private String email = faker.internet().emailAddress();
     private String incorrectEmail = faker.internet().emailAddress() + faker.random();
     private String password = faker.internet().password();

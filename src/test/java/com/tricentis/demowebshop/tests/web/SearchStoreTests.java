@@ -1,7 +1,5 @@
 package com.tricentis.demowebshop.tests.web;
 
-import com.tricentis.demowebshop.pages.BasePage;
-import com.tricentis.demowebshop.pages.SaerchStorePage;
 import com.tricentis.demowebshop.tests.BaseTests;
 import io.qameta.allure.*;
 import org.junit.jupiter.api.DisplayName;
@@ -16,8 +14,6 @@ import java.util.stream.Stream;
 @Story("Поиск товара в поисковой строке")
 @DisplayName("Поиск товара в поисковой строке")
 public class SearchStoreTests extends BaseTests {
-    SaerchStorePage saerchStorePage = new SaerchStorePage();
-    BasePage basePage = new BasePage();
 
     @AllureId("16799")
     @ParameterizedTest(name = "Поиск в поисковой строке продукта {0}, ожидаем результат: {1}")

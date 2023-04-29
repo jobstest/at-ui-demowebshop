@@ -1,8 +1,5 @@
 package com.tricentis.demowebshop.tests.web;
 
-import com.github.javafaker.Faker;
-import com.tricentis.demowebshop.pages.BasePage;
-import com.tricentis.demowebshop.pages.NewsLetterPage;
 import com.tricentis.demowebshop.tests.BaseTests;
 import io.qameta.allure.*;
 import org.junit.jupiter.api.DisplayName;
@@ -14,9 +11,6 @@ import org.junit.jupiter.api.Test;
 @Story("Подписка на новости от интернет-магазина")
 @DisplayName("Подписка на новости")
 public class NewsLetterTests extends BaseTests {
-    NewsLetterPage newsLetterPage = new NewsLetterPage();
-    BasePage basePage = new BasePage();
-    Faker faker = new Faker();
     private String correctEmail = faker.internet().emailAddress();
     private String incorrectEmail = faker.internet().emailAddress() + faker.random();
     private String successfulSubscriptionMessage = "Thank you for signing up! " +
