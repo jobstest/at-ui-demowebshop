@@ -78,20 +78,6 @@ dependencies {
     )
 }
 
-allure {
-    report {
-        version.set(allureVersion)  // версия Allure Report (https://github.com/allure-framework/allure2)
-    }
-    adapter {
-        aspectjWeaver.set(true) // обработка аннотации @Step - класс WebSteps
-        frameworks {
-            junit5 {
-                adapterVersion.set(allureVersion) // версия Allure Junit5 (https://github.com/allure-framework/allure-java)
-            }
-        }
-    }
-}
-
 test {
     useJUnitPlatform()
 }
