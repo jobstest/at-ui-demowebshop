@@ -1,5 +1,6 @@
 package com.tricentis.demowebshop.tests.web;
 
+import com.tricentis.demowebshop.config.Auth;
 import com.tricentis.demowebshop.tests.BaseTests;
 import io.qameta.allure.*;
 import org.junit.jupiter.api.DisplayName;
@@ -16,8 +17,8 @@ public class AuthFormTests extends BaseTests {
     private String email = faker.internet().emailAddress();
     private String incorrectEmail = faker.internet().emailAddress() + faker.random();
     private String password = faker.internet().password();
-    private final String correctEmail = config.correctEmail();
-    private final String correctPassword = config.correctPassword();
+    private final String correctEmail = Auth.config.correctEmail();
+    private final String correctPassword = Auth.config.correctPassword();
     private String errorMessageEmailPassword = "Login was unsuccessful. Please correct the errors and try again. No customer account found";
     private String errorMessagePassword = "Login was unsuccessful. Please correct the errors and try again. The credentials provided are incorrect";
     private String errorMessageEmail = "Please enter a valid email address.";
