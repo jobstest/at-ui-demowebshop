@@ -155,7 +155,6 @@ gradle-app.setting
 !gradle-wrapper.properties
 
 # Properties files
-*.properties
 
 # Cache of project
 .gradletasknamecache
