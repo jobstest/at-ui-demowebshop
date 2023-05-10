@@ -17,7 +17,7 @@ public class DriverSetting {
         String loginSelenoid = Selenoid.config.loginSelenoid();
         String passwordSelenoid = Selenoid.config.passwordSelenoid();
         String uniformResourceNameSelenoid = Selenoid.config.uniformResourceNameSelenoid();
-        Configuration.remote = "https://" + loginSelenoid + ":" + passwordSelenoid + "@" + uniformResourceNameSelenoid +"/wd/hub/";
+        //Configuration.remote = "https://" + loginSelenoid + ":" + passwordSelenoid + "@" + uniformResourceNameSelenoid +"/wd/hub/";
 
         DesiredCapabilities capabilities = new DesiredCapabilities();
         capabilities.setCapability("enableVNC", true);
